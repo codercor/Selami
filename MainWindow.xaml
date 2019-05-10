@@ -1,0 +1,132 @@
+﻿<Window x:Class="Selami.MainWindow"
+        xmlns:WPFEyesLib="clr-namespace:WPFEyesLib;assembly=WPFEyesLib"     
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Selami"
+        mc:Ignorable="d"
+        Title="Asistan Selami" Height="400" Width="500"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        ShowInTaskbar="True" 
+        MouseDown="Window_MouseDown"
+        Background="Transparent" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+          
+        </Grid.ColumnDefinitions>
+        <Border
+            BorderBrush="Black"
+       BorderThickness="1.5"
+             CornerRadius="650"
+            Grid.Row="0"
+            Grid.RowSpan="7"
+            Grid.Column="0"
+            Grid.ColumnSpan="10"
+            >
+            <Border.Background>
+                <ImageBrush ImageSource="C:\Users\corx\source\repos\Selami\Selami\resimler\background.png"/>
+            </Border.Background>
+        </Border>
+        
+      
+        <Label Grid.Row="2" Grid.Column="2" Grid.RowSpan="1" Grid.ColumnSpan="6"  Margin="20,-5,10,25"
+         Name="metin" Foreground="#FFFDFDFD" Content="Ben Selami" VerticalContentAlignment="Center"/>
+        <Image Grid.Row="1"   Grid.Column="2" Name="ayarlarbtn" MouseDown="Ayarlarbtn_MouseDown"
+              Source="C:\Users\corx\source\repos\Selami\Selami\resimler\ayar.png">
+            <Image.RenderTransform>
+                <RotateTransform CenterX="20" CenterY="20" />
+            </Image.RenderTransform>
+            <Image.Style>
+                <Style>
+                    <Style.Triggers>
+                        <Trigger Property="Image.IsMouseOver" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                    Storyboard.TargetProperty="RenderTransform.Angle"
+                                    From="0"
+                                    To="360"
+                                    Duration="0:0:1"
+                                     />
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Image.Style>
+        </Image>
+        <Border  Visibility="Hidden" Background="White" Name="menu" BorderBrush="Red" Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="6" CornerRadius="20,20,20,20" BorderThickness="2,2,2,2">
+        
+
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                    <Label  Content="Genel" Grid.Row="0" Grid.Column="0" FontSize="8" />
+                <RadioButton Name="genelMod"  IsChecked="True" Grid.Row="1" Grid.Column="0"/>
+                    <Label Content="Komut" Grid.Row="0" Grid.Column="1" FontSize="8"/>
+                    <RadioButton Name="komutMod"  Grid.Row="1" Grid.Column="1" />
+                    <Label Content="Çeviri" Grid.Row="0" Grid.Column="2" FontSize="8"  />
+                    <RadioButton Name="ceviriMod"  Grid.Row="1" Grid.Column="2" />
+                    <Label Content="Eğlence" Grid.Row="0" Grid.Column="3" FontSize="8" />
+                    <RadioButton Name="eglenceMod"  Grid.Row="1" Grid.Column="3" />
+                    <Label Content="Arama" Grid.Row="0" Grid.Column="4" FontSize="8" />
+                    <RadioButton Name="aramaMod"  Grid.Row="1" Grid.Column="4" />
+                <Button Name="ogrAc" Click="OgrAc_Click"
+                        Background="LightGreen" Content="Öğret" Grid.Row="1" Margin="1" Grid.ColumnSpan="2" Grid.Column="5"/>
+                <Button Name="kapat" Click="Kapat_Click"
+                        Background="DarkRed"  Content="Kapat" Grid.Row="0" Margin="1" Grid.ColumnSpan="2" Grid.Column="5"/>
+            </Grid>
+            
+        </Border>
+        <Image Visibility="Visible"  MouseDown="agiz_Click"  Name="kapaliAgiz" 
+               Source="C:\Users\corx\source\repos\Selami\Selami\resimler\agizkapali.png" Margin="20,0,20,20" 
+               Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="6"></Image>
+        <Image Visibility="Hidden"  MouseDown="agiz_Click"  Name="acikAgiz" 
+               Source="C:\Users\corx\source\repos\Selami\Selami\resimler\agizacik.png" 
+               Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="6"></Image>
+        <Image Visibility="Hidden"  MouseDown="Durdurma_MouseDown" Width="30" Margin="0,0,0,10" 
+               Name="durdurmaBtn" Source="C:\Users\corx\source\repos\Selami\Selami\resimler\durBtn.png" 
+               Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="6"></Image>
+        
+        <Image Visibility="Hidden" Name="kulak" Source="C:\Users\corx\source\repos\Selami\Selami\resimler\kulak.png" Grid.Row="2" Grid.Column="9" Grid.RowSpan="3" Grid.ColumnSpan="3"></Image>
+
+        <WPFEyesLib:WPFEyesControl FillInner="White" FillOuter="Purple" Name="gozler" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="4"/>
+    </Grid>
+</Window>
